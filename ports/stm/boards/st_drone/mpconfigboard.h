@@ -34,13 +34,25 @@
 
 // #define AUTORESET_DELAY_MS (500)
 
-#define HSE_VALUE ((uint32_t)16000000)
+#define HSE_VALUE ((uint32_t)16000000U)
 #define BOARD_HAS_LOW_SPEED_CRYSTAL (0)
+#define BOARD_NO_VBUS_SENSE (1)
 #define CPY_CLK_USB_USES_AUDIOPLL (1)
 
+#define CIRCUITPY_AUTORELOAD_DELAY_MS (500)
+
+#define AUTORESET_DELAY_MS (500)
+
+// Status LED
+// #define MICROPY_HW_LED_STATUS (&pin_PB05)
+
 // Bootloader only
-#ifdef UF2_BOOTLOADER_ENABLED
-    #define BOARD_VTOR_DEFER (1) // Leave VTOR relocation to bootloader
-#endif
+// #ifdef UF2_BOOTLOADER_ENABLED
+//    #define BOARD_VTOR_DEFER (1) // Leave VTOR relocation to bootloader
+// #endif
 
 // #define MICROPY_FATFS_EXFAT 0
+
+// USB is always used internally so skip the pin objects for it.
+#define IGNORE_PIN_PA11 (1)
+#define IGNORE_PIN_PA12 (1)
